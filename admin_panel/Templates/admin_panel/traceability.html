@@ -1,0 +1,27 @@
+{% extends 'admin_panel/dashboard.html' %}
+{% block content %}
+   
+   
+    <h1>Tracabilité du Chatbot</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID Utilisateur</th>
+                <th>Message</th>
+                <th>Réponse</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for trace in traces %}
+                <tr>
+                    <td>{{ trace.user_id }}</td>
+                    <td>{{ trace.message }}</td>
+                    <td>{{ trace.response }}</td>
+                    <td>{{ trace.timestamp }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock  %}

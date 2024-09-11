@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends 'dashboard.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversations</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Conversations User-Chatbot</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Utilisateur</th>
+                <th>Message</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for conversation in conversations %}
+                <tr>
+                    <td>{{ conversation.user.username }}</td>
+                    <td>{{ conversation.message }}</td>
+                    <td>{{ conversation.timestamp }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</body>
+</html>

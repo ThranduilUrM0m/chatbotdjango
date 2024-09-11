@@ -1,0 +1,11 @@
+{% extends 'dashboard.html' %}
+    <h1>Messages for Conversation ID: {{ conversation.id }}</h1>
+    <ul>
+        {% for message in messages %}
+            <li>
+                {{ message.timestamp }} - {{ message.content }} ({{ message.author_user_id or message.author_chatbot_id }})
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'view_conversations' %}">Back to Conversations</a>
+    

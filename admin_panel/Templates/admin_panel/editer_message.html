@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'dashboard.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion Messages Typiques</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Edit Predefined Message</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" cols="50">{{ predefined_message.message }}</textarea>
+        <br>
+        <button type="submit">Save</button>
+    </form>
+   
+</body>
+</html>

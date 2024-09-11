@@ -1,0 +1,33 @@
+{% extends 'admin_panel/dashboard.html' %}
+
+{% block content %}
+
+<!-- Style this Header -->
+<h1>Audit Logs</h1>
+
+<!-- Needs some entries to check the content -->
+<ul id="audit-logs"></ul>
+
+<script>
+    const ulElement = document.getElementById("audit-logs");
+
+    fetch("http://127.0.0.1:5000/track_visit", {
+        method: 'POST'
+    })
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .then((data) => {
+            const liElement = document.createElement("li");
+            liElement.innerText = `IP Address: ${data.ip_address}, Visit Time: ${data.visit_time}`;
+            ulElement.appendChild(liElement);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+</script>
+
+{% endblock %}
